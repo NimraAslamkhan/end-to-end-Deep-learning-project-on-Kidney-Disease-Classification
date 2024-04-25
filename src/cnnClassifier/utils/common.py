@@ -6,41 +6,36 @@ import json
 import joblib
 from ensure import ensure_annotations
 from box import ConfigBox
-
 from pathlib import Path
 from typing import Any
 import base64
 
 
-from box import Box
 
 @ensure_annotations
-def read_yaml(path_to_yaml: Path) -> Box:
-    """Reads a YAML file and returns its content as a Box object.
+def read_yaml(path_to_yaml: Path) -> ConfigBox:
+    """reads yaml file and returns
 
     Args:
-        path_to_yaml (Path): The path to the YAML file.
+        path_to_yaml (str): path like input
 
     Raises:
-        ValueError: If the YAML file is empty.
+        ValueError: if yaml file is empty
+        e: empty file
 
     Returns:
-        Box: The YAML content as a Box object.
+        ConfigBox: ConfigBox type
     """
     try:
         with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
-            if content is None:
-                raise ValueError("YAML file is empty")
-            logger.info(f"YAML file '{path_to_yaml}' loaded successfully")
-            return Box(content)
+            logger.info(f"yaml file: {path_to_yaml} loaded successfully")
+            return ConfigBox(content)
+    except BoxValueError:
+        raise ValueError("yaml file is empty")
     except Exception as e:
         raise e
-
-
-
-
-
+    
 
 
 @ensure_annotations
@@ -140,3 +135,5 @@ def decodeImage(imgstring, fileName):
 def encodeImageIntoBase64(croppedImagePath):
     with open(croppedImagePath, "rb") as f:
         return base64.b64encode(f.read())
+
+

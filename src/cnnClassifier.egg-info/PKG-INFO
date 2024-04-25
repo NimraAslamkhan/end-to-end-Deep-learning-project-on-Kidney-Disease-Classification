@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: cnnClassifier
+Version: 0.0.0
+Summary: A small python package for CNN app
+Home-page: https://github.com/NimraAslamkhan/end-to-end-Deep-learning-project-on-Kidney-Disease-Classification
+Author: NimraAslamkhan
+Author-email: nimraaslam3132@gmail.com
+Project-URL: Bug Tracker, https://github.com/NimraAslamkhan/end-to-end-Deep-learning-project-on-Kidney-Disease-Classification/issues
+License-File: LICENSE
+
+# end-to-end-Deep-learning-project-on-Kidney-Disease-Classification
