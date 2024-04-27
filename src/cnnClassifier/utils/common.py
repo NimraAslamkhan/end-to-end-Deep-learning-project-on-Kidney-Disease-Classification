@@ -50,16 +50,21 @@ def create_directories(path_to_directories: list, verbose=True):
         os.makedirs(path, exist_ok=True)
         if verbose:
             logger.info(f"created directory at: {path}")
+
+
 @ensure_annotations
-def save_bin(data: Any, path: Path):
-    """save binary file
+def save_json(path: Path, data: dict):
+    """save json data
 
     Args:
-        data (Any): data to be saved as binary
-        path (Path): path to binary file
+        path (Path): path to json file
+        data (dict): data to be saved in json file
     """
-    joblib.dump(value=data, filename=path)
-    logger.info(f"binary file saved at: {path}")
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+
+    logger.info(f"json file saved at: {path}")
+
 
 
 
